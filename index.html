@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zoran Marjanovic Games</title>
+    <style>
+        :root {
+            --bg-dark: #0f1115;
+            --bg-card: #1a1d24;
+            --accent: #4ade80; /* Clean, modern green */
+            --text-main: #f8fafc;
+            --text-sec: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Navigation */
+        nav {
+            padding: 2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .brand {
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 6rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 span {
+            color: var(--accent);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-sec);
+            max-width: 600px;
+            margin-bottom: 2rem;
+        }
+
+        /* Games Grid */
+        .portfolio {
+            padding: 4rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--accent);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border-color: rgba(74, 222, 128, 0.3);
+        }
+
+        .card-image {
+            height: 200px;
+            background: #252a33;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-sec);
+            font-style: italic;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .card-desc {
+            color: var(--text-sec);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .store-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            text-decoration: none;
+            color: var(--text-main);
+            transition: background 0.2s;
+        }
+
+        .store-badge:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .wip-badge {
+            background: rgba(74, 222, 128, 0.1);
+            color: var(--accent);
+        }
+
+        /* About Section */
+        .about {
+            padding: 4rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .about-text {
+            max-width: 800px;
+        }
+
+        .about-text p {
+            color: var(--text-sec);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        /* Styling for the AI link in the text */
+        .ai-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .ai-link:hover {
+            text-decoration: underline;
+        }
+
+        /* AI Disclaimer & Pipeline Section */
+        .disclaimer {
+            padding: 2rem 5% 6rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            color: var(--text-sec);
+        }
+
+        .disclaimer h4 {
+            color: var(--text-main);
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+
+        .disclaimer p {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .disclaimer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .disclaimer a:hover {
+            text-decoration: underline;
+        }
+
+        .pipeline-container {
+            margin-top: 3rem;
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .pipeline-container h5 {
+            color: var(--text-main);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+
+        .pipeline-track {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .pipeline-step {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .pipeline-img {
+            width: 100%;     
+            max-width: 200px;  
+            height: auto;     
+            object-fit: cover;
+            border-radius: 8px;
+            background: #252a33;
+        }
+
+        .arrow {
+            color: var(--accent);
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        @media (max-width: 900px) {
+            .pipeline-track {
+                flex-direction: column;
+            }
+            .pipeline-step {
+                flex-direction: column;
+            }
+            .arrow {
+                transform: rotate(90deg);
+            }
+            .pipeline-img {
+                width: 100%;
+                max-width: 300px;
+                height: auto;
+                aspect-ratio: 1/1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .about { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="brand">Zoran Marjanovic</div>
+        <div class="nav-links">
+            <a href="#games">Games</a>
+            <a href="#about">About</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <h1>Building games,<br><span>having fun.</span></h1>
+        <p>Reviving dead projects in my Godot Folder one by one.</p>
+    </header>
+
+    <section id="games" class="portfolio">
+        <h2 class="section-title">Released Titles on iOS (Android coming soon)</h2>
+        <div class="grid">
+            
+            <!-- Game 1 -->
+            <div class="card">
+                <div class="card-image" style="padding: 1.5rem;">
+                    <img src="icon_render_rs.png" alt="Roadshift" style="width: 100%; height: 100%; object-fit: contain;">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Road Shift</h3>
+                    <p class="card-desc">A minimalist logic puzzle challenging your spatial reasoning.</p>
+                    <a href="https://apps.apple.com/at/app/road-shift-puzzle-game/id6795070655?l=en-GB" class="store-badge" target="_blank">App Store</a>
+                </div>
+            </div>
+
+            <!-- Game 2 -->
+            <div class="card">
+                <div class="card-image" style="padding: 1.5rem;">
+                    <img src="icon_render_msc.png" alt="Minesweeper: Cubed" style="width: 100%; height: 100%; object-fit: contain;">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Minesweeper: Cubed</h3>
+                    <p class="card-desc">The classic puzzle game completely reimagined in a 3D space.</p>
+                    <a href="https://apps.apple.com/at/app/minesweeper-cubed/id6805506291?l=en-GB" class="store-badge" target="_blank">App Store</a>
+                </div>
+            </div>
+
+            <!-- Game 3 -->
+            <div class="card">
+                <div class="card-image" style="padding: 1.5rem;">
+                    <img src="icon_render_cc.png" alt="Crossing Colors" style="width: 100%; height: 100%; object-fit: contain;">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Crossing Colors</h3>
+                    <p class="card-desc">A vibrant, fast-paced color-matching puzzle experience.</p>
+                    <a href="https://apps.apple.com/at/app/crossing-colors/id6808979999?l=en-GB" class="store-badge" target="_blank">App Store</a>
+                </div>
+            </div>
+
+            <!-- WIP Game -->
+            <div class="card">
+                <div class="card-image" style="padding: 1.5rem;">
+                    <img src="schrodingers_marble_teaser.png" alt="TBD" style="width: 100%; height: 100%; object-fit: contain;">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Schrödinger's Marble</h3>
+                    <p class="card-desc">An upcoming physics-based puzzle about a single marble in quantum superposition.</p>
+                    <span class="store-badge wip-badge">In Development</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="about-text">
+            <h2 class="section-title">About Me</h2>
+            <p>I am a guy based in Vienna, Austria. I started creating stuff in the Godot engine pretty precisely 10 years ago. Finally, I have the skills, time, and <a href="#ai-disclaimer" class="ai-link" title="Read my note on AI">tools*</a> to actually release some games. While my dream is to release a fully fledged game one day, mobile games are the perfect starting point to learn game design and successfully launch them.</p>
+            <p>Learning the whole App Store/Play Store pipeline is such a long and infuriating process, but a great start into the backend side of things before continuing with a large-scale video game. I try to turn simple ideas into crisp mechanics and highly satisfying core loops.</p>
+            <p>From rapid prototyping and precise level design to managing the full App Store Connect pipeline, I handle the complete lifecycle of bringing a game from a single mechanic idea to a polished release.</p>
+        </div>
+    </section>
+
+    <section id="ai-disclaimer" class="disclaimer">
+        <h4>*A note on AI</h4>
+        <p>At the word "tools" I can already hear people scream "AI!!!". Yes, I do use AI. But I plan, design, and code the prototype myself. I don't create any assets, and I don't create any art or music with AI. I'm grateful for the work of great designers (mostly <a href="https://kenney.nl/" target="_blank">Kenney.nl</a>, thanks! Support them!).</p>
+        <p>I do use AI for checking redundancy in my code, reducing game size, helping with level creation algorithm and math in general, AdMob code, and stuff like that, which I just can't do myself. I respect all solo developers greatly who go through this stuff by themselves, but I had always given up before I even got to the bureaucratic stuff.</p>
+        
+        <div class="pipeline-container">
+            <h5>Here is what my process looks like:</h5>
+            <div class="pipeline-track">
+                
+                <div class="pipeline-step">
+                    <img src="minesweeper_prototype_1.gif" alt="Prototype 1" class="pipeline-img">
+                    <span class="arrow">&rarr;</span>
+                </div>
+                
+                <div class="pipeline-step">
+                    <img src="minesweeper_prototype_2.gif" alt="Prototype 2" class="pipeline-img">
+                    <span class="arrow">&rarr;</span>
+                </div>
+                
+                <div class="pipeline-step">
+                    <img src="minesweeper_prototype_3.gif" alt="Prototype 3" class="pipeline-img">
+                    <span class="arrow">&rarr;</span>
+                </div>
+                
+                <div class="pipeline-step">
+                    <img src="minesweeper_final.gif" alt="Final Product" class="pipeline-img">
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
